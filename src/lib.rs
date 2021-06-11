@@ -27,6 +27,8 @@ extern crate tempfile;
 #[macro_use]
 extern crate lazy_static;
 
+#[cfg(feature = "cloud")]
+pub use cloud::CloudEnvOptions;
 pub use compaction_filter::{
     new_compaction_filter, new_compaction_filter_factory, new_compaction_filter_raw,
     CompactionFilter, CompactionFilterContext, CompactionFilterDecision, CompactionFilterFactory,
@@ -80,6 +82,8 @@ pub use write_batch::{WriteBatch, WriteBatchIter, WriteBatchRef};
 #[allow(deprecated)]
 pub use rocksdb::Kv;
 
+#[cfg(feature = "cloud")]
+mod cloud;
 mod compaction_filter;
 pub mod comparator;
 #[cfg(feature = "encryption")]
